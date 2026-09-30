@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="calibration_background">#FF0C1114</color>
+    <color name="calibration_surface">#FF172026</color>
+    <color name="calibration_text">#FFEEF3F5</color>
+    <color name="calibration_text_secondary">#FF9FADB4</color>
+    <color name="calibration_accent">#FF39BDCD</color>
+    <color name="calibration_preview_background">#FF030506</color>
+    <color name="calibration_preview_label">#B3000000</color>
+    <color name="calibration_status_idle">#FF65747B</color>
+    <color name="calibration_status_running">#FF258A98</color>
+    <color name="calibration_status_valid">#FF287A52</color>
+    <color name="calibration_status_poor">#FF9B6A12</color>
+    <color name="calibration_status_warning">#FFA8464B</color>
+</resources>

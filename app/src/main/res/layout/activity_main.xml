@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/calibration_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/calibration_surface"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:text="UVC Calibrator"
+        android:textAppearance="?attr/textAppearanceTitleLarge"
+        android:textColor="@color/calibration_text" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <com.hev.uvccapturecalibration.PreviewFrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/calibration_preview_background">
+
+                <ImageView
+                    android:id="@+id/preview_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="UVC capture preview"
+                    android:scaleType="fitCenter" />
+
+                <com.hev.uvccapturecalibration.PreviewGuideView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:importantForAccessibility="no" />
+
+                <TextView
+                    android:id="@+id/preview_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|top"
+                    android:layout_margin="8dp"
+                    android:background="@color/calibration_preview_label"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="Tap Connect / inspect UVC"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+            </com.hev.uvccapturecalibration.PreviewFrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="UVC device / Processing Unit"
+                    android:textColor="@color/calibration_text_secondary"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/inspect_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="Connect / inspect UVC" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Input Contract — all fields required"
+                android:textColor="@color/calibration_text"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Encoding" android:textColor="@color/calibration_text_secondary" android:textSize="11sp" />
+                    <Spinner android:id="@+id/encoding_spinner" android:layout_width="match_parent" android:layout_height="48dp" android:contentDescription="Input encoding" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Range" android:textColor="@color/calibration_text_secondary" android:textSize="11sp" />
+                    <Spinner android:id="@+id/range_spinner" android:layout_width="match_parent" android:layout_height="48dp" android:contentDescription="Input range" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Colorimetry" android:textColor="@color/calibration_text_secondary" android:textSize="11sp" />
+                    <Spinner android:id="@+id/colorimetry_spinner" android:layout_width="match_parent" android:layout_height="48dp" android:contentDescription="Colorimetry" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Transfer" android:textColor="@color/calibration_text_secondary" android:textSize="11sp" />
+                    <Spinner android:id="@+id/transfer_spinner" android:layout_width="match_parent" android:layout_height="48dp" android:contentDescription="Transfer characteristics" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/one_tap_button"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/calibration_accent"
+                android:text="Start one-tap calibration"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <ProgressBar
+                android:id="@+id/calibration_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:max="100"
+                android:progress="0"
+                android:progressTint="@color/calibration_accent"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/calibration_progress_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/calibration_text_secondary"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/calibration_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/calibration_status_background"
+                android:gravity="center"
+                android:text="NOT CALIBRATED"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/commit_button"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:text="Commit / export profile" />
+
+            <Button
+                android:id="@+id/advanced_button"
+                style="?attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="8dp"
+                android:text="Manual operations"
+                android:textAllCaps="false"
+                android:textColor="@color/calibration_text_secondary"
+                android:textSize="11sp" />
+
+            <LinearLayout
+                android:id="@+id/advanced_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <Spinner android:id="@+id/control_spinner" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" />
+                    <EditText android:id="@+id/requested_value" android:layout_width="112dp" android:layout_height="48dp" android:hint="Value" android:inputType="numberSigned" android:maxLines="1" />
+                </LinearLayout>
+
+                <Button android:id="@+id/set_button" android:layout_width="match_parent" android:layout_height="48dp" android:text="Set and verify" />
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <EditText android:id="@+id/frame_count" android:layout_width="96dp" android:layout_height="48dp" android:hint="Frames" android:inputType="number" android:maxLines="1" android:text="8" />
+                    <Button android:id="@+id/measure_button" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:text="Measure 24 patches" />
+                </LinearLayout>
+
+                <Button android:id="@+id/auto_cal_button" android:layout_width="match_parent" android:layout_height="48dp" android:text="Auto calibrate PU (2 pass)" />
+                <Button android:id="@+id/solve_button" android:layout_width="match_parent" android:layout_height="48dp" android:text="Solve offset + 3x3 matrix" />
+                <Button android:id="@+id/validate_button" android:layout_width="match_parent" android:layout_height="48dp" android:text="Validate calibration" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Result log"
+                    android:textColor="@color/calibration_text_secondary"
+                    android:textStyle="bold" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/calibration_surface"
+                    android:fillViewport="true"
+                    android:padding="10dp"
+                    android:scrollbars="horizontal">
+
+                    <com.hev.uvccapturecalibration.ResultScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fillViewport="true"
+                        android:scrollbars="vertical">
+
+                        <TextView
+                            android:id="@+id/result_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="monospace"
+                            android:paddingEnd="8dp"
+                            android:textColor="@color/calibration_text"
+                            android:textIsSelectable="true"
+                            android:textSize="12sp" />
+                    </com.hev.uvccapturecalibration.ResultScrollView>
+                </HorizontalScrollView>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="calibration_background">#FFF4F7F8</color>
+    <color name="calibration_surface">#FFFFFFFF</color>
+    <color name="calibration_text">#FF182226</color>
+    <color name="calibration_text_secondary">#FF617178</color>
+    <color name="calibration_accent">#FF0B8091</color>
+    <color name="calibration_preview_background">#FF030506</color>
+    <color name="calibration_preview_label">#B3000000</color>
+    <color name="calibration_status_idle">#FF65747B</color>
+    <color name="calibration_status_running">#FF0B8091</color>
+    <color name="calibration_status_valid">#FF25784F</color>
+    <color name="calibration_status_poor">#FFA46B00</color>
+    <color name="calibration_status_warning">#FFB73D43</color>
+</resources>
